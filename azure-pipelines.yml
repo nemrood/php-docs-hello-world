@@ -30,10 +30,9 @@ steps:
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 
-- script: phpunit
+- script: phpunit --coverage-html $(System.DefaultWorkingDirectory)/**/*coverage.html
   displayName: 'testing with phpUnit'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+
 
 - task: PublishBuildArtifacts@1
   displayName: Publish Artifact
