@@ -31,10 +31,12 @@ steps:
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish Artifact
+- task: ArchiveFiles@2
   inputs:
-    PathtoPublish: $(build.artifactstagingdirectory)
+    rootFolderOrFile: '$(system.defaultWorkingDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1
+
 
 - task: AzureWebApp@1
   displayName: Azure Web App Deploy
@@ -42,4 +44,4 @@ steps:
     azureSubscription: $(serviceConnectionToAzure)
     appType: webAppLinux
     appName: $(appName)
-    package: $(build.artifactstagingdirectory)/*.zip
+    package: $(build.artifactstagingdirectory)/**/*.zip
