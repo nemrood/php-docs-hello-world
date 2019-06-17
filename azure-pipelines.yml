@@ -30,17 +30,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: npm install --only=prod
-- script: npm audit fix
-- script: npm install -g @angular/cli
 
-- script: npm run build
-
-- script: gulp                       # include any additional options that are needed
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/TEST-RESULTS.xml'
-    testRunTitle: 'Test results for JavaScript using gulp'
 
 - task: PublishCodeCoverageResults@1
   inputs: 
